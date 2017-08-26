@@ -1,0 +1,12 @@
+@keyframes slideInRight {
+  from   { transform:translateX(100%); }
+  to     { transform: translateX(0); }
+}
+@keyframes slideOutLeft {
+  to     { transform: translateX(-100%); }
+}
+
+ .index-page.ng-enter { animation: slideInRight 0.3s both linear; }
+ .record-page.ng-enter { animation: slideInRight 0.3s both linear; }
+ .detail-page.ng-enter { animation: slideInRight 0.3s both linear; } 
+

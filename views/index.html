@@ -1,0 +1,317 @@
+
+		<div class="wrap page-home">
+			<!--头部-->
+			<div class="poker-top">
+				<div class="poker-top-lnk">
+					<a class="poker-top-lnk-rule" ng-click="hideRule()">
+						<i></i>
+						规则
+					</a>
+					
+					<a class="#/">
+						<i></i>
+						领奖
+					</a>
+					
+					<a ng-href="#/record" class="poker-top-lnk-record">
+						<i></i>
+						记录
+					</a>
+				</div>
+				<div class="end-timer">
+					<p class="tit">
+						正在<br>
+						竞猜
+					</p>
+					<div class="progress-cnt">
+						<p class="time"><span>0</span> 秒</p>
+						<p class="progress-bar">
+							<span style="width: 0%;"></span>
+						</p>
+					</div>
+				</div>
+				<div class="lottery">
+					<div class="prev-lottery">
+						<p class="tit">上期开奖</p>
+						<p class="data">
+							<span class="data-item">小</span>
+							<span class="line">｜</span>
+							<span class="data-item">
+								<i class="icon-suit icon-spade"></i>
+							</span>
+							<span class="line">｜</span>
+							<span class="data-item">2</span>
+						</p>
+					</div>
+					<div class="past-lottery" ng-click="pastLottery()">
+						往期	<i class="arrow"></i>
+					</div>
+				</div>		
+			</div>
+			
+			<!--中间主体部分-->
+			<div class="poker-cen">
+				
+				<div class="awards-plus awards-plus-blue">
+ 
+				</div>
+				
+				<div class="bunny"></div>
+				
+				<div class="awards-result">
+					<span class="decorate-arrow2"></span>
+					<div class="result-img">
+						<span class="decorate-cicle"></span>
+						<span class="decorate-cicle2"></span>
+						<span class="decorate-arrow"></span>
+						<span class="poker-cards">
+							<i class="icon-cards-suit icon-square"></i>
+							<span class="num">4</span>
+						</span>
+					</div>
+					<div class="poker-txt">
+						<strong>上期开奖</strong>
+						 
+					</div>
+				</div>
+				
+				<div class="turntable">
+					<div class="num-index">
+						<ul>
+							<li ng-repeat="num in chipTypeArrOut" class="num-item {{num}}">
+								<a class="num-click" ng-click="myClickChip(num,$event.target)"></a>
+								<span class="date-clc" style="transform-origin: 0px 0px 0px;opacity: 1;transform: scale(1, 1);">
+									<span class="date-item date-item-blue" ng-hide="selfPoint[num] == 0">{{selfPoint[num]}}</span>
+									<span class="date-item date-item-orange" ng-hide="totalPoint[num] == 0">{{totalPoint[num]}}</span>
+							</li>
+						</ul>
+						<span class="num-index-all">投1得9</span>
+					</div>
+				
+					<div class="suit-index">
+						<ul>
+							<li ng-repeat="num in chipTypeArrMid" class="suit-item {{num}}">
+								<a class="num-click" attr={{num}} ng-click="myClickChip(num,$event.target)"></a>
+								<span class="date-clc" style="transform-origin: 0px 0px 0px;opacity: 1;transform: scale(1, 1);">
+									<span class="date-item date-item-blue" ng-hide="selfPoint[num] == 0">{{selfPoint[num]}}</span>
+									<span class="date-item date-item-orange" ng-hide="totalPoint[num] == 0">{{totalPoint[num]}}</span>
+							</li>
+						</ul>
+						<span class="suit-index-all">投1得3</span>
+					</div>
+				
+					<div class="size-index">
+						<ul>
+							<li ng-repeat="num in chipTypeArrCen" class="size-item {{num}}">
+								<a class="num-click" ng-click="myClickChip(num,$event.target)"></a>
+								<span class="date-clc" style="transform-origin: 0px 0px 0px;opacity: 1;transform: scale(1, 1);">
+									<span class="date-item date-item-blue" ng-hide="selfPoint[num] == 0">{{selfPoint[num]}}</span>
+									<span class="date-item date-item-orange" ng-hide="totalPoint[num] == 0">{{totalPoint[num]}}</span>
+							</li>
+						</ul>
+						<span class="size-index-all">投1得1.7</span>
+					</div>				
+				</div>
+									
+				<ul class="party-user">
+						<li class="party-item">
+							<span class="img">
+								<img src="img/usericon.jpg">
+							</span>
+							<p class="name">用户</p>
+						</li>
+						<li class="party-item">
+							<span class="img">
+								<img src="img/usericon.jpg">
+							</span>
+							<p class="name">用户</p>
+						</li>
+						<li class="party-item">
+							<span class="img">
+								<img src="img/{{selfimg}}">
+							</span>
+							<p class="name">{{selfname}}</p>
+						</li>
+						<li class="party-item">
+							<span class="img">
+								<img src="img/usericon.jpg">
+							</span>
+							<p class="name">用户</p>
+						</li>
+						<li class="party-item">
+							<span class="img">
+								<img src="img/usericon.jpg">
+							</span>
+							<p class="name">用户</p>
+						</li>
+					</ul>
+
+ 			
+				
+			</div>
+			
+			<!--底部-->
+			<div class="poker-bot">
+				<div class="balance">
+					<h3>
+						幸运豆余额
+						<i class="icon-add" ng-click="showCharge()"></i>
+					</h3>
+					<p class="bean">{{selfbean}}</p>
+				</div>
+				<div class="chip-list">
+					<span class="chip-item chip-1 fadeUp" ng-click="changeChip($event)" data-stake="1"></span>
+					<span class="chip-item chip-2" ng-click="changeChip($event)" data-stake="2"></span>
+					<span class="chip-item chip-5" ng-click="changeChip($event)" data-stake="5"></span>
+				</div>
+				<div class="revoke">
+					<i class="icon-del"></i>
+					撤销
+				</div>
+			</div>
+			
+			<div class="panel-lottery none">
+				<div class="panel-lottery-cont">
+					<div class="record-table">
+						<table width="100%" class="panel-lottery-table">
+						<thead>
+							<tr>
+								<th>期号</th>
+								<th>大</th>
+								<th>中</th>
+								<th>小</th>
+								<th><i class="icon-th-suit icon-spade"></i></th>
+								<th><i class="icon-th-suit icon-hearts"></i></th>
+								<th><i class="icon-th-suit icon-plum"></i></th>
+								<th><i class="icon-th-suit icon-square"></i></th>
+								<th>点数</th>	
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1658</td>
+								<td></td>
+								<td></td>
+								<td>
+									<span class="yellow">小</span>
+								</td>
+								<td></td>
+								<td><i class="icon-td-suit icon-hearts"></i></td>
+								<td></td>
+								<td></td>
+								<td><span class="orange">4</span></td>
+							</tr>
+							
+							<tr>
+								<td>1658</td>
+								<td></td>
+								<td></td>
+								<td>
+									<span class="yellow">小</span>
+								</td>
+								<td><i class="icon-td-suit icon-spade"></i></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><span class="orange">8</span></td>
+							</tr>
+							
+							<tr>
+								<td>1658</td>
+								<td><span class="yellow">大</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><i class="icon-td-suit icon-plum"></i></td>
+								<td></td>
+								<td><span class="orange">10</span></td>
+							</tr>
+							
+							<tr>
+								<td>1658</td>
+								<td></td>
+								<td><span class="yellow">中</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><i class="icon-td-suit icon-square"></i></td>
+								<td><span class="orange">K</span></td>
+							</tr>
+							
+							<tr>
+								<td>1658</td>
+								<td></td>
+								<td><span class="yellow">中</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><i class="icon-td-suit icon-square"></i></td>
+								<td><span class="orange">K</span></td>
+							</tr>
+							
+							<tr>
+								<td>1658</td>
+								<td></td>
+								<td><span class="yellow">中</span></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><i class="icon-td-suit icon-plum"></i></td>
+								<td><span class="orange">K</span></td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+					<div class="lottery-btn">
+			            <a href="javascript:;" class="btn-lottery" ng-click="pastLottery()">继续竞猜</a>
+			        </div>
+				</div>
+			</div>
+		
+			<div id="panel-mask" class="none"></div>
+		</div>
+		
+		<div class="hidebg"></div>
+		<div class="ts"></div>
+		<div class="revokets">
+			<h1>是否撤销本次投注？</h1>
+			<h2><a href="#" class="cancelBtn">取消</a><a href="#" class="sureBtn">确认</a></h2>
+		</div>
+		
+		<div class="get-bean-box">
+			<h1>获取幸运豆</h1>
+			<h2>我的幸运豆<span>0.00</span></h2>
+			<ul>
+				<li>
+					<span><img src="img/bean10.png"></span><span>10幸运豆</span><span><a>获取</a></span>
+				</li>
+				<li>
+					<span><img src="img/bean20.png"></span><span>20幸运豆</span><span><a>获取</a></span>
+				</li>
+				<li>
+					<span><img src="img/bean50.png"></span><span>50幸运豆</span><span><a>获取</a></span>
+				</li>
+				<li>
+					<span><img src="img/bean100.png"></span><span>100幸运豆</span><span><a>获取</a></span>
+				</li>
+				<li>
+					<span><img src="img/bean500.png"></span><span>500幸运豆</span><span><a>获取</a></span>
+				</li>
+				<li>
+					<span><img src="img/bean1000.png"></span><span>1000幸运豆</span><span><a>获取</a></span>
+				</li>				
+			</ul>
+			<span class="panel-close" ng-click="hideCharge()">×</span>
+		</div>
+		
+		<div class="game_rule_box">
+			<h1>游戏规则</h1>
+			<div class="rule_cnt" ng-bind-html="rule | to_trusted"></div>
+			<div class="lottery-btn">
+			            <a ng-click="hideRule()" class="btn-lottery">继续竞猜</a>
+			</div>
+		</div>
